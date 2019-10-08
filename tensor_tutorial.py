@@ -37,7 +37,7 @@ def plot_image(i, predictions_array, true_label, img):
 # makes bar plot
 def plot_value_array(i, predictions_array, true_label):
     predictions_array, true_label = predictions_array, true_label[i]
-    plt.grid(True)
+    plt.grid(False)
     plt.xticks(range(10))
     plt.yticks([])
     # makes bar plot
@@ -54,6 +54,7 @@ fashion_mnist = keras.datasets.fashion_mnist
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
+# divide by 255 to scale thing to between 0 and 1
 train_images = train_images / 255
 test_images = test_images / 255
 
@@ -121,3 +122,4 @@ img = test_images[1]
 img = (np.expand_dims(img, 0))
 
 predictions_single = model.predict(img)
+plot_value_array(1, predictions_single, test_labels)
